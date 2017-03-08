@@ -50,9 +50,10 @@ def get_items(a):
 
 
 def create_list(ind,*b):
-	"(contend of list, 1st list dimension, \
+	"""(contend of list, 1st list dimension, \
 	[other list dimensions])--> n dimennsions list  \
 	n must be 1-6"
+	"""
 	a=len(b) #list dimensions
 	d=1 #a pointer that grows to the list dimensions (a)
 	while True:
@@ -126,10 +127,3 @@ def reshape_array(a,*args):
       for k in len (shape[2]):
         a[i][j][k]=2
   
-
-
-
-  
-A = [None] * 3 
-for i in range(3):
-    A[i] = [None] * 2
