@@ -11,11 +11,9 @@ class multi_list(list):
 			self=self[0]
 			bathos-=1
 		return shape
-    
-		def flatten_list(self):
-      c=''.join([i for i in str(self)if i not in'[] ']).strip(',')
-      return multi_list(list(map(int,c.split(','))))
-  
+	def flatten_list(self):
+			c=''.join([i for i in str(self)if i not in'[] ']).strip(',')
+			return multi_list(list(map(int,c.split(','))))
   
   
 from copy import deepcopy
