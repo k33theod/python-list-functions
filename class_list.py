@@ -14,17 +14,17 @@ class multi_list(list):
 	def flatten_list(self):
 			c=''.join([i for i in str(self)if i not in'[] ']).strip(',')
 			return multi_list(list(map(int,c.split(','))))
-  
-  
+		
+from pprint import pprint as pp
 from copy import deepcopy
 def create_list(val, *dimensions):
-  dimensions = list(dimensions)
-  if len(dimensions):
-    current = dimensions.pop()
-  else:  # finished!
-    return val
-  next_list = []
-  for i in range(current):
-    next_list.append(deepcopy(val))
-  return create_list(next_list, *dimensions)
+	dimensions = list(dimensions)
+	if len(dimensions):
+		current = dimensions.pop()
+	else:  # finished!
+		return val
+	next_list = []
+	for i in range(current):
+		next_list.append(deepcopy(val))
+	return create_list(next_list, *dimensions)
 	 
