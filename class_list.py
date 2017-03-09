@@ -1,6 +1,6 @@
 class multi_list(list):
 	def get_shape(self):
-    bathos=0
+		bathos=0
 		for i in str(self):
 			if i!='[':
 				break
@@ -11,10 +11,8 @@ class multi_list(list):
 			self=self[0]
 			bathos-=1
 		return shape
-    def flatten_list(self):
-      """
-      Returns a one dimension list from the multidimensional list of numbers a
-      """
+    
+		def flatten_list(self):
       c=''.join([i for i in str(self)if i not in'[] ']).strip(',')
       return multi_list(list(map(int,c.split(','))))
   
