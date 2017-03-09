@@ -1,18 +1,33 @@
 class multi_list(list):
-  def __init__(self,lista):
-    self=lista
   def get_shape(self):
-    """
-    Returns the shape of the multidimensional array of numbers a
-    """
-    self.bathos=0;
-    for i in str(self):
-      if i!='[':
-        break
-      self.bathos+=1
-    self.shape=[]
-    while bathos>0:
-      self.shape.append(len(self))
-      self=self[0]
-      self.bathos-=1
-    return self.shape 
+    bathos=0
+		for i in str(self):
+			if i!='[':
+				break
+			bathos+=1
+		shape=[]
+		while bathos>0:
+			shape.append(len(self))
+			self=self[0]
+			bathos-=1
+		return shape
+    def flatten_list(self):
+      """
+      Returns a one dimension list from the multidimensional list of numbers a
+      """
+      c=''.join([i for i in str(self)if i not in'[] ']).strip(',')
+      return multi_list(list(map(int,c.split(','))))
+  
+  
+  
+from copy import deepcopy
+def create_list(val, *dimensions):
+  dimensions = list(dimensions)
+  if len(dimensions):
+    current = dimensions.pop()
+  else:  # finished!
+    return val
+  next_list = []
+  for i in range(current):
+    next_list.append(deepcopy(val))
+  return create_list(next_list, *dimensions)
