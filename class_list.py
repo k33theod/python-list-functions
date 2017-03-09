@@ -14,6 +14,12 @@ class multi_list(list):
 	def flatten_list(self):
 			c=''.join([i for i in str(self)if i not in'[] ']).strip(',')
 			return multi_list(list(map(int,c.split(','))))
+	def grammes_stiles(self):
+		b=list(zip(*self))
+		return multi_list([list(i) for i in b])
+	from functools import reduce
+	def get_items(self):
+		return reduce(lambda x,y :x*y, get_shape(self)) 
 		
 from pprint import pprint as pp
 from copy import deepcopy
