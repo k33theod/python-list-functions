@@ -5,6 +5,11 @@ class ML(list):
 	
 	def reshape(self,*dimesions):
    		dimesions=list(dimesions)
+		mul=1
+    		for i in dimesions:
+      			mul*=i
+    		if mul!=len(self):
+      			raise (ValueError)("The product of dimensions should me equal to {}".format(len(self)))
     		if len(dimesions)>1:
       			current = dimesions.pop()
     		else:  # finished!
