@@ -1,9 +1,8 @@
-from pprint import pprint as pp
 from copy import deepcopy
 from functools import reduce
 
 class ML(list):
-	
+
 	def shape(self):
 		bathos=0
 		for i in str(self):
@@ -18,8 +17,8 @@ class ML(list):
 		return _shape
 	
 	def flatten(self):
-			c=''.join([i for i in str(self)if i not in'[] ']).strip(',')
-			return super(list(map(int,c.split(','))))
+		c=''.join([i for i in str(self)if i not in'[] ']).strip(',')
+		return super(list(map(int,c.split(','))))
 	
 	def rows_to_columns(self):
 		b=list(zip(*self))
@@ -39,4 +38,18 @@ def create_list(val, *dimensions):
 	for i in range(current):
 		next_list.append(deepcopy(val))
 	return create_list(next_list, *dimensions)
+
+def reshape(a,*dimesions):
+	dimesions=list(dimesions)
+	if len(dimesions)>1:
+		current = dimesions.pop()
+	else:  # finished!
+		return a
+	result=[]
+	index=0
+	while index<len(a) :
+		result.append(list(a[index:index+current]))
+		index+=current
+	return reshape(result,*dimesions)
+
 	 
