@@ -93,37 +93,15 @@ def create_list(ind,*b):
 	return pinakas  
 
   
-  
-def reshape_list(a,*args):
-  komatia=reduce(lambda x,y :x*y, args[:-1])
-  bathos=len(args)-1
-  my_list = flatten_list(a)
-  idex=0
-  new_list=create_list(1,*args[:-1])
-  kommati=get_items(a)/args[-1]
-  while bathos>0:
-    for i in new_list:
-  
-  new_list.append(my_list[idex:idex+kommati])
-  idex+=kommati
-       
-    bathos-=1
-    idex+=1  
-  return my_list
-  return komatia,bathos
-
-def reshape_array(a,*args):
-  komatia=reduce(lambda x,y :x*y, args[:-1])
-  my_list = flatten_list(a)
-  index=0
-  new_list=create_list(1,b,c)
-  for i in len(b)
-  
-  shape=get_shape(a)
-  bathos=len(shape)
-  
-  for i in len(shape[0]):
-    for j in len(shape[1]):
-      for k in len (shape[2]):
-        a[i][j][k]=2
-  
+def reshape1(a,*dimesions):
+	dimesions=list(dimesions)
+	if len(dimesions)>1:
+		current = dimesions.pop()
+	else:  # finished!
+		return a
+	result=[]
+	index=0
+	while index<len(a) :
+		result.append(list(a[index:index+current]))
+		index+=current
+	return reshape1(result,*dimesions)
