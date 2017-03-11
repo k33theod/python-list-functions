@@ -21,6 +21,7 @@ class ML(list):
       			index+=current
     		return ML.reshape(result,*dimesions)	
   	
+	@property
 	def shape(self):
     		bathos=0
     		for i in str(self):
@@ -42,8 +43,9 @@ class ML(list):
     		b=list(zip(*self))
     		return ML([list(i) for i in b])
 	
+	@property
   	def items(self):
-    		return reduce(lambda x,y :x*y, ML.shape(self)) 
+    		return reduce(lambda x,y :x*y, self.shape) 
     	
 	def create_list(val, *dimensions):
     		dimensions = list(dimensions)
