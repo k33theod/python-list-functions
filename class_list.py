@@ -1,11 +1,14 @@
 from copy import deepcopy
-from functools import reduce
 
 class ML(list):
 	
 	def reshape(self,*dimesions):
-   		dimesions=list(dimesions)
-		mul=1
+    		self=self.flatten()
+    		return self._reshape(*dimesions)
+  	
+	def _reshape(self,*dimesions):
+    		dimesions=list(dimesions)
+    		mul=1
     		for i in dimesions:
       			mul*=i
     		if mul!=len(self):
@@ -19,7 +22,7 @@ class ML(list):
     		while index<len(self) :
       			result.append(list(self[index:index+current]))
       			index+=current
-    		return ML.reshape(result,*dimesions)	
+    		return ML._reshape(result,*dimesions)	
   	
 	@property
 	def shape(self):
@@ -45,7 +48,8 @@ class ML(list):
 	
 	@property
   	def items(self):
-    		return reduce(lambda x,y :x*y, self.shape) 
+    		self=self.flatten()
+    		return len(self) 
     	
 	def create_list(val, *dimensions):
     		dimensions = list(dimensions)
