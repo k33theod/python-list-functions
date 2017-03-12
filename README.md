@@ -1,5 +1,6 @@
 # python-list-functions
-An extension to class list 
+An extension to class list.
+
 A number of methods and properties that extend the list class
 
 PROPERTIES
