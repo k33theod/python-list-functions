@@ -16,13 +16,13 @@ class ML(list):
     		if len(dimesions)>1:
       			current = dimesions.pop()
     		else:  # finished!
-      			return ML(self)
+      			return type(self)(self)
     		result=[]
     		index=0
     		while index<len(self) :
       			result.append(list(self[index:index+current]))
       			index+=current
-    		return ML._reshape(result,*dimesions)	
+    		return type(self)._reshape(result,*dimesions)	
   	
 	@property
 	def shape(self):
@@ -40,24 +40,25 @@ class ML(list):
 
   	def flatten(self):
     		c=''.join([i for i in str(self)if i not in'[] ']).strip(',')
-    		return ML(list(map(int,c.split(','))))
+    		return type(self)(list(map(int,c.split(','))))
 
   	def rows_to_columns(self):
     		b=list(zip(*self))
-    		return ML([list(i) for i in b])
+    		return type(self)([list(i) for i in b])
 	
 	@property
   	def items(self):
     		self=self.flatten()
     		return len(self) 
     	
-	def create_list(val, *dimensions):
+	@classmethod
+	def create_list(cls, val, *dimensions):
     		dimensions = list(dimensions)
     		if len(dimensions):
       			current = dimensions.pop()
     		else:  # finished!
-      			return ML(val)
+      			return cls(val)
     		next_list = []
     		for i in range(current):
       			next_list.append(deepcopy(val))
-    		return ML.create_list(next_list, *dimensions)
+    		return cls.create_list(next_list, *dimensions)
